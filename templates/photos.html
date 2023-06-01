@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photos</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="welcome-image">
+        <img src="https://oily.pl/wp-content/uploads/2017/03/papaja-w-kosmetykach-p-870x500.jpg" alt="Photo">
+        <div class="image-overlay">
+            <h2>Powitalna Papaja</h2>
+        </div>
+    </div>
+    <h1>Galeria zdjęć</h1>
+    <div class="image-gallery">
+    {% for entry in entries %}
+        {% if entry.photo %}
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='photos/' + entry.photo) }}" alt="{{ entry.photo.filename }}">
+        </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+    <a class="home-button" href="/">Powrót do strony głównej</a>
+</body>
+</html>

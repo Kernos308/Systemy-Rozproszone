@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formularz</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Formularz</h1>
+    <form method="POST" action="/form" enctype="multipart/form-data" class="formularz-form">
+        <div>
+            <label for="name">Imię:</label>
+            <input type="text" id="name" name="name"><br><br>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+        </div>
+        <div>
+            <input type="file" name="photo">
+            <input type="submit" value="Wyślij">
+        </div>
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flash-messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <a class="home-button" href="/">Powrót do strony głównej</a>
+</body>
+</html>
+
+
